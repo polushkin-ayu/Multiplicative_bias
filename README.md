@@ -4,3 +4,4 @@
 Open-acess датасеты для проекта: 
 - Датасет страховой: https://drive.google.com/file/d/12gj4WVrV0vPCM0leqPdyWWfDnuvzNl_X/view?usp=share_link
 - Датасет ритейл: https://drive.google.com/drive/folders/1CTmU9Bh6zIl5hepmc6BLi6U7WzXD-T3v?usp=share_link
+- Датасет банковский риск: https://drive.google.com/file/d/11CHnXAJcHCrXWHd_XHJcjITjqiZ1KHTj/view?usp=share_link
