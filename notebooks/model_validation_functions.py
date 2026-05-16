@@ -94,3 +94,32 @@ def woe_line(df, score, target, n_buckets=5):
         plt.legend()
 
         plt.show()
+
+def gain_chart(df, target_nm, pred_nm, num_buckets=4, method='q'):
+    
+    df_cut = df[[target_nm, pred_nm]]
+    df_cut = generate_bucket(df_cut, pred_nm, num_buckets, method=method)
+
+    bucket_nm = pred_nm + '_bucket'
+
+    df_grouped = df_cut.groupby(bucket_nm)\
+        .agg(
+            n_obs = (target_nm,'count'),
+            mean_target = (target_nm, 'mean'),
+            mean_pred = (pred_nm, 'mean'),
+            std_target = (target_nm, 'std')
+        )\
+        .reset_index()
+
+    plt.figure(figsize=(10,5))
+
+    plt.bar(df_grouped[bucket_nm], df_grouped.mean_target,
+                 color='lightblue', label = 'mean target')
+    plt.errorbar(df_grouped[bucket_nm], df_grouped.mean_target, 
+                 1.96 * df_grouped.std_target/np.sqrt(df_grouped.n_obs), 
+                 color='black', linestyle=' ')
+    plt.plot(df_grouped[bucket_nm], df_grouped.mean_pred, color='red', label='mean pred')
+
+    plt.legend()
+
+    plt.show()
